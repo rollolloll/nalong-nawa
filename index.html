@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+ <html lang="zh-CN">
+ <head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>南工程 · 奶龙奶蛙爱好者站</title>
+ <style>
+ *{
+   margin:0;
+   padding:0;
+   box-sizing:border-box;
+ }
+ body{
+   background:#fff9d9;
+   font-family:"Microsoft Yahei",system-ui;
+   color:#333;
+   padding:20px;
+ }
+ .container{
+   max-width:700px;
+   margin:0 auto;
+   background:#fff;
+   border-radius:20px;
+   padding:30px;
+   box-shadow:0 4px 12px #00000018;
+ }
+ h1{
+   color:#ffbc00;
+   text-align:center;
+   margin-bottom:12px;
+ }
+ .sub{
+   text-align:center;
+   color:#777;
+   margin-bottom:24px;
+   font-size:14px;
+ }
+ .box{
+   background:#fff7dc;
+   border-radius:14px;
+   padding:18px;
+   margin:16px 0;
+ }
+ footer{
+   margin-top:30px;
+   font-size:13px;
+   color:#999;
+   text-align:center;
+ }
+ .na{
+   cursor:pointer;
+   user-select:none;
+   text-align:center;
+   font-size:80px;
+   margin:20px 0;
+ }
+ .egg-tip{
+   text-align:center;
+   color:#999;
+   font-size:14px;
+ }
+ img{
+   display:block;
+   max-width:100%;
+   border-radius:12px;
+   object-fit:cover;
+ }
+ /* 奶龙奶蛙介绍区 */
+ .img-row{
+   display:flex;
+   gap:14px;
+   margin:14px 0;
+ }
+ .img-card{
+   flex:1;
+   text-align:center;
+ }
+ .img-card img{
+   width:100%;
+   border-radius:10px;
+   border:1px solid #ffe89c;
+ }
+ .img-card p{
+   font-size:13px;
+   margin-top:8px;
+   color:#555;
+   line-height:1.5;
+ }
+ /* 投票 */
+ .vote-wrap{
+   text-align:center;
+ }
+ .vote-btn{
+   padding:12px 24px;
+   margin:10px;
+   border:none;
+   border-radius:12px;
+   font-size:18px;
+   cursor:pointer;
+ }
+ #voteLong{
+   background:#ffd343;
+ }
+ #voteFrog{
+   background:#7cd993;
+ }
+ .vote-count{
+   font-size:20px;
+   margin:8px 0;
+ }
+ .tip{
+   color:#888;
+   font-size:13px;
+ }
+ /* BGM */
+ .audio-box{
+   text-align:center;
+   margin-bottom:10px;
+ }
+ #bgmBtn{
+   padding:8px 16px;
+   border-radius:8px;
+   border:0;
+   background:#ffbc00;
+   cursor:pointer;
+ }
+ /* 生日解锁区 */
+ .birthday-box{
+   text-align:center;
+ }
+ .birthday-input{
+   padding:10px 14px;
+   border-radius:10px;
+   border:1px solid #ffd343;
+   font-size:16px;
+   margin:12px 8px 12px 0;
+   outline:none;
+ }
+ .unlock-btn{
+   padding:10px 18px;
+   border:none;
+   border-radius:10px;
+   background:#7cd993;
+   color:#fff;
+   font-size:16px;
+   cursor:pointer;
+ }
+ .unlock-btn:hover{
+   background:#5ebd7a;
+ }
+ .gift{
+   margin-top:16px;
+   display:none;
+ }
+ .gift.active{
+   display:block;
+ }
+ .gift img{
+   width:220px;
+   margin:0 auto;
+   border-radius:14px;
+   border:3px solid #ffbc00;
+ }
+ .gift p{
+   margin-top:10px;
+   color:#555;
+   font-size:14px;
+ }
+ /* 页脚作者 */
+ .maker{
+   margin-top:10px;
+   font-size:12px;
+   color:#aaa;
+ }
+ .maker .nickname{
+   font-size:15px;
+   font-weight:bold;
+   color:#ffbc00;
+ }
+ @media (max-width:500px){
+   .img-row{
+     flex-direction:column;
+   }
+ }
+ </style>
+ </head>
+ <body>
+ <div class="container">
+   <div class="audio-box">
+     <audio id="bgm" loop>
+       <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+     
+     <button id="bgmBtn">🔊 播放背景音乐</button>
+   </div>
+   <h1>🐉🐸 NJIT 奶龙&奶蛙爱好者分部</h1>
+   <p class="sub">⚠️本网站为南工程学生娱乐站｜非学校/奶龙官方｜仅供同学整活交流</p >
+   <p class="egg-tip">✨点击下方表情触发小彩蛋！</p >
+   <div class="na" id="clickMe">🐸</div>
+   <div class="box vote-wrap">
+     <h3>🗳 投票：你更喜欢谁？（近一个月投票总量）</h3>
+     <div class="vote-count">
+       奶龙：<span id="numLong">0</span> 票 &nbsp;&nbsp;
+       奶蛙：<span id="numFrog">0</span> 票
+     </div>
+     <button class="vote-btn" id="voteLong">🐉 投奶龙</button>
+     <button class="vote-btn" id="voteFrog">🐸 投奶蛙</button>
+     <p class="tip">每位访客仅可投一票</p >
+   </div>
+   <div class="box">
+     <h3>📌什么是奶系生物？</h3>
+     <div class="img-row">
+       <div class="img-card">
+         <img src="nailong.jpg" alt="奶龙">
+         <p>奶龙：人气爆棚的黄色小龙，性格天真活泼，可爱魔性，表情包出圈，全网超高热度。</p >
+       </div>
+       <div class="img-card">
+         <img src="naiwa.jpg" alt="奶蛙">
+         <p>奶蛙：似龙非龙、似蛙非蛙的神秘生物，呆萌又有梗，是大家快乐整活的重要搭子。</p >
+       </div>
+     </div>
+     <p>奶龙和奶蛙一起，组成了南工程同学之间轻松、可爱、爱整活的快乐氛围。</p >
+   </div>
+   <div class="box">
+     <h3>📢入群通道</h3>
+     <p>1群已满，可私信主播QQ：3964613553，拉你进新群</p >
+   </div>
+   <!-- 生日解锁专属星座奶蛙 -->
+   <div class="box birthday-box">
+     <h3>🎂输入你的生日解锁专属奶蛙</h3>
+     <p style="color:#777;font-size:14px;margin-top:8px;">输入生日，获取对应星座专属奶蛙形象</p >
+     <input type="date" class="birthday-input" id="birthdayInput">
+     <button class="unlock-btn" id="unlockBtn">解锁专属奶蛙</button>
+     <div class="gift" id="gift">
+       <img id="zodiacImg" src="" alt="星座奶蛙">
+       <p id="giftText"></p >
+     </div>
+   </div>
+   <footer>
+     快乐第一｜不作商用｜理性整活｜NJIT · 2026
+     <div class="maker">
+       网站制作：南工程<span class="nickname">铁牛</span>同学
+     </div>
+   </footer>
+ </div>
+ <script>
+ // 点击彩蛋表情
+ const el = document.getElementById('clickMe');
+ let arr = ["🐸","🐉","🫵","🤪","🟡"];
+ el.onclick = () => {
+   el.innerText = arr[Math.floor(Math.random() * arr.length)];
+ };
+ // 随机票数
+ function getRandomVotes(){
+   let a, b;
+   do{
+     a = Math.floor(Math.random() * 301);
+     b = Math.floor(Math.random() * 301);
+   } while (Math.abs(a - b) > 45);
+   return { long: a, frog: b };
+ }
+ const voteData = getRandomVotes();
+ document.getElementById("numLong").innerText = voteData.long;
+ document.getElementById("numFrog").innerText = voteData.frog;
+ // 投票逻辑
+ const btnLong = document.getElementById("voteLong");
+ const btnFrog = document.getElementById("voteFrog");
+ let hasVoted = localStorage.getItem("hasVoted");
+ if(hasVoted){
+   btnLong.disabled = true;
+   btnFrog.disabled = true;
+   btnLong.style.opacity = 0.5;
+   btnFrog.style.opacity = 0.5;
+ }
+ function lockVote(){
+   localStorage.setItem("hasVoted", "yes");
+   hasVoted = true;
+   btnLong.disabled = true;
+   btnFrog.disabled = true;
+   btnLong.style.opacity = 0.5;
+   btnFrog.style.opacity = 0.5;
+ }
+ btnLong.onclick = function(){
+   if(hasVoted) return;
+   lockVote();
+   alert("✅投票成功！感谢参与");
+ };
+ btnFrog.onclick = function(){
+   if(hasVoted) return;
+   lockVote();
+   alert("✅投票成功！感谢参与");
+ };
+ // BGM
+ const bgm = document.getElementById('bgm');
+ const bgmBtn = document.getElementById('bgmBtn');
+ let playing = false;
+ bgmBtn.onclick = () => {
+   if(!playing){
+     bgm.play();
+     bgmBtn.innerText = "🔇 暂停BGM";
+     playing = true;
+   } else {
+     bgm.pause();
+     bgmBtn.innerText = "🔊 播放背景音乐";
+     playing = false;
+   }
+ };
+ // ===== 星座判断逻辑 =====
+ function getZodiac(month, day) {
+   if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) return {name:"水瓶座",file:"aquarius.jpg"};
+   if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) return {name:"双鱼座",file:"pisces.jpg"};
+   if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return {name:"白羊座",file:"aries.jpg"};
+   if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) return {name:"金牛座",file:"taurus.jpg"};
+   if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) return {name:"双子座",file:"gemini.jpg"};
+   if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) return {name:"巨蟹座",file:"cancer.jpg"};
+   if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) return {name:"狮子座",file:"leo.jpg"};
+   if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) return {name:"处女座",file:"virgo.jpg"};
+   if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) return {name:"天秤座",file:"libra.jpg"};
+   if ((month === 10 && day >= 24) || (month === 11 && day <= 22)) return {name:"天蝎座",file:"scorpio.jpg"};
+   if ((month === 11 && day >= 23) || (month === 12 && day <= 21)) return {name:"射手座",file:"sagittarius.jpg"};
+   return {name:"摩羯座",file:"capricorn.jpg"}; //12.22–1.19
+ }
+ // 生日解锁
+ const birthdayInput = document.getElementById('birthdayInput');
+ const unlockBtn = document.getElementById('unlockBtn');
+ const gift = document.getElementById('gift');
+ const giftText = document.getElementById('giftText');
+ const zodiacImg = document.getElementById('zodiacImg');
+ unlockBtn.onclick = function(){
+   const birthday = birthdayInput.value;
+   if(!birthday){
+     alert("⚠️请先选择你的生日");
+     return;
+   }
+   // birthday格式 YYYY-MM-DD
+   const md = birthday.split("-");
+   const month = parseInt(md[1]);
+   const day = parseInt(md[2]);
+   const zodiac = getZodiac(month, day);
+   gift.classList.add("active");
+   zodiacImg.src = zodiac.file;
+   giftText.innerText = `🎁 你的星座：${zodiac.name}，专属奶蛙已解锁！`;
+ };
+ </script>
+ </body>
+ </html>
